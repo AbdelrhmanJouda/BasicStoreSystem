@@ -3,36 +3,28 @@
 
 
 // sanitize 
-
-
 function sanitizedata($data){
 return    trim(htmlspecialchars(htmlentities($data)));
 }
-
 // validations
-
 function maxLength($string,$length){
     if(strlen($string) > $length){
         return true;
     }
     return false;
 }
-
 function minLength($string,$length){
     if(strlen($string) < $length){
         return true;
     }
     return false;
 }
-
 // check email
-
 function checkEmail($email){
     if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
         return true;
     }return false;
 }
-
         ///////////==  JSON  ==//////////////
 // create data //
 function CreateData($fileName){
@@ -50,7 +42,6 @@ function CreateData($fileName){
     fclose($file);                         
     return $final_data;                     
 }
-
 // write append data //
 function WriteAppend($fileName){
     $data = json_decode(file_get_contents($fileName),true);  
@@ -65,9 +56,9 @@ function WriteAppend($fileName){
     $final_data = json_encode($data);                           
     return $final_data;                                         
 }
-        //===========good job==================//
+        //=============================//
 
-            // ============REGISTERATION AND LOGIN =========== //
+// ============REGISTERATION AND LOGIN =========== //
         //===check data===//
 function checkData($name,$email,$filename){
     
@@ -90,8 +81,6 @@ function  checkLogData($email,$password,$filename){
         }
         return false;
     }
-
-
         // == check wiche wrong name == //
 function WichExist($name,$email,$fileName){
     $data = json_decode(file_get_contents($fileName),true);
@@ -106,8 +95,6 @@ function WichExist($name,$email,$fileName){
     }
     return $error;
 }
-
-
         //===Logs===/
 function LogUser($filename){
     $data = json_decode(file_get_contents($filename),true);
@@ -141,10 +128,9 @@ function LogUserimg($filename){
     }
     return $loguser;
 }
-
-       ////////////////////                                     //////////////////////
-                            /////////////PRODUCTS/////////////                       
-        ///////////////////                                    //////////////////////
+////////////////////                                     //////////////////////
+                    /////////////PRODUCTS/////////////                       
+///////////////////                                    //////////////////////
 
 function CreateProductData($fileName){              //create product data
     $file = fopen($fileName,"w");        
@@ -161,8 +147,6 @@ function CreateProductData($fileName){              //create product data
     fclose($file);                         
     return $final_data;                     
 }
-
-
 // write product append data //
 function WriteProductAppend($fileName){
     $data = json_decode(file_get_contents($fileName),true);  
@@ -177,9 +161,7 @@ function WriteProductAppend($fileName){
     $final_data = json_encode($data);                           
     return $final_data;                                         
 }
-
 // product id
-
 function LastId($filename){
     $data = json_decode(file_get_contents($filename),true);
    if(isset($data)){
@@ -190,15 +172,8 @@ function LastId($filename){
    }
    return 0;
 }
-
-
-
 // =====================================================
-
-
-
     //redirect
 function redirect($location){
     return    header("location:$location");
 }
-
